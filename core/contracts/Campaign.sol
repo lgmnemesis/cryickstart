@@ -8,7 +8,7 @@ contract Campaign is ICampaign {
     address public manager;
     uint256 public minContribution;
     mapping(address => uint256) public bakers;
-    uint256 bakersCount;
+    uint256 public bakersCount;
 
     struct Request {
         string description;
