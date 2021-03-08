@@ -1,9 +1,10 @@
-import factory from '../hooks/useFactory';
+import Factory from '../hooks/useFactory';
 import { Card, Button } from 'semantic-ui-react';
 import Layout from '../components/Layout';
+import { Link } from '../routes';
 
 Start.getInitialProps = async () => {
-  const campaigns = await factory.methods.getDeployedCampaigns().call();
+  const campaigns = await Factory.methods.getDeployedCampaigns().call();
   return { campaigns };
 }
 
@@ -11,7 +12,10 @@ function renderCampaigns(campaigns) {
   const items = campaigns.map(address => { 
     return {
       header: address,
-      description: <a>View Campaign</a>,
+      description: 
+        <Link route={`/campaigns/${address}`}>
+          <a>View Campaign</a>
+        </Link>,
       fluid: true
     }
   });
@@ -23,7 +27,11 @@ function Start({campaigns}) {
     <Layout>
       <div>
         <h3>Open Campaigns</h3>
-        <Button content="Create Campaign" icon="add circle" floated="right" primary/>
+        <Link route="/campaigns/new">
+          <a>
+            <Button content="Create Campaign" icon="add circle" floated="right" primary/>
+          </a>
+        </Link>
         {renderCampaigns(campaigns)}
       </div>
     </Layout>

@@ -70,6 +70,12 @@ contract('Campaign', (accounts) => {
       const value = flourSupplierCurrentValue - flourSupplierValue;
       assert.equal(value.toString(), request.value.toString(), `flourSpplier value should increas by ${web3.utils.fromWei(request.value.toString())} ether`);
     });
+
+    it('Get summary', async () => {
+      const sum = await campaign.getSummary();
+      console.log('sum:', sum);
+      assert.equal('', '');
+    });
   })
 
 })

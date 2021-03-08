@@ -82,4 +82,29 @@ contract Campaign is ICampaign {
         request.complete = true;
         payable(request.recipient).transfer(request.value);
     }
+
+    function getSummary()
+        external
+        view
+        override
+        returns (
+            uint256,
+            uint256,
+            uint256,
+            uint256,
+            address
+        )
+    {
+        return (
+            minContribution,
+            address(this).balance,
+            requests.length,
+            bakersCount,
+            manager
+        );
+    }
+
+    function getRequestsCount() external view override returns (uint256) {
+        return requests.length;
+    }
 }

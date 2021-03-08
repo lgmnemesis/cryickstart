@@ -13,4 +13,17 @@ interface ICampaign {
     function approveRequest(uint256 index) external;
 
     function finalizeRequest(uint256 index) external;
+
+    function getSummary()
+        external
+        view
+        returns (
+            uint256,
+            uint256,
+            uint256,
+            uint256,
+            address
+        );
+
+    function getRequestsCount() external view returns (uint256);
 }

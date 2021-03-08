@@ -7,7 +7,7 @@ if (typeof window !== 'undefined' && typeof window.web3 !== 'undefined') {
   // Browser + metamask
   const ethereum = window.ethereum;
   if (ethereum) {
-    // window.web3 = new Web3(ethereum);
+    window.web3 = new Web3(ethereum);
     web3 = window.web3;
   }
 } else {
