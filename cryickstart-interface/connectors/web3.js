@@ -7,13 +7,14 @@ if (typeof window !== 'undefined' && typeof window.web3 !== 'undefined') {
   // Browser + metamask
   const ethereum = window.ethereum;
   if (ethereum) {
-    window.web3 = new Web3(ethereum);
+    // window.web3 = new Web3(ethereum);
     web3 = window.web3;
   }
 } else {
   // Server || no metamask
   const provider = new Web3.providers.HttpProvider(KOVAN_INFURA_END_POINT);
   web3 = new Web3(provider);
+  console.log('moshe web3 server');
 }
 
 // const web3 = () => {
