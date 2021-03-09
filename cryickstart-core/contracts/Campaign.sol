@@ -10,14 +10,6 @@ contract Campaign is ICampaign {
     mapping(address => uint256) public bakers;
     uint256 public bakersCount;
 
-    struct Request {
-        string description;
-        uint256 value;
-        address recipient;
-        uint256 approved;
-        bool complete;
-    }
-
     Request[] public requests;
     mapping(uint256 => mapping(address => bool)) approvedByBaker;
 
@@ -106,5 +98,18 @@ contract Campaign is ICampaign {
 
     function getRequestsCount() external view override returns (uint256) {
         return requests.length;
+    }
+
+    function getRequests() external view override returns (Request[] memory) {
+        return requests;
+    }
+
+    function isApprovedBakerByRequest(uint256 index)
+        external
+        view
+        override
+        returns (bool)
+    {
+        return approvedByBaker[index][msg.sender];
     }
 }

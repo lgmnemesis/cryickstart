@@ -2,6 +2,14 @@
 pragma solidity >=0.7.4;
 
 interface ICampaign {
+    struct Request {
+        string description;
+        uint256 value;
+        address recipient;
+        uint256 approved;
+        bool complete;
+    }
+
     function contribute() external payable;
 
     function createRequest(
@@ -26,4 +34,11 @@ interface ICampaign {
         );
 
     function getRequestsCount() external view returns (uint256);
+
+    function getRequests() external view returns (Request[] memory);
+
+    function isApprovedBakerByRequest(uint256 index)
+        external
+        view
+        returns (bool);
 }

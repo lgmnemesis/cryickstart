@@ -73,8 +73,17 @@ contract('Campaign', (accounts) => {
 
     it('Get summary', async () => {
       const sum = await campaign.getSummary();
-      console.log('sum:', sum);
       assert.equal('', '');
+    });
+
+    it('Get Requests struct array', async () => {
+      const req = await campaign.getRequests();
+      assert.equal('', '');
+    });
+
+    it('Confirm Approved Baker By Request', async () => {
+      const isApproved = await campaign.isApprovedBakerByRequest(0, {from: baker1});
+      assert.equal(isApproved.toString(), 'true', 'Baker was not approved after all');
     });
   })
 
